@@ -21,12 +21,24 @@ function saveProgress(progress) {
 }
 
 /**
+ * Проверяет, полностью ли выполнен навык (оба чекбокса отмечены)
+ * @param {HTMLInputElement} mainCheckbox - Основной чекбокс навыка
+ * @returns {boolean} true если оба чекбокса отмечены
+ */
+function isSkillCompleted(mainCheckbox) {
+    if (!mainCheckbox.checked) return false;
+    
+    const readyCheckbox = document.getElementById(`ready-${mainCheckbox.id}`);
+    return readyCheckbox ? readyCheckbox.checked : false;
+}
+
+/**
  * Обновляет счетчик прогресса и прогресс-бар для конкретной категории
  * @param {string} category - Название категории
  */
 function updateCategoryProgress(category) {
     const checkboxes = document.querySelectorAll(`input[data-category="${category}"]`);
-    const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const checked = Array.from(checkboxes).filter(cb => isSkillCompleted(cb)).length;
     const total = checkboxes.length;
     const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
     
@@ -55,10 +67,10 @@ function updateCategoryProgress(category) {
  * Обновляет общий прогресс-бар и текст прогресса
  */
 function updateTotalProgress() {
-    const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-    const checked = Array.from(allCheckboxes).filter(cb => cb.checked).length;
-    const total = allCheckboxes.length;
-    const percentage = Math.round((checked / total) * 100);
+    const allMainCheckboxes = document.querySelectorAll('input[type="checkbox"][data-category]');
+    const checked = Array.from(allMainCheckboxes).filter(cb => isSkillCompleted(cb)).length;
+    const total = allMainCheckboxes.length;
+    const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
     
     const totalProgressBar = document.getElementById('totalProgress');
     const totalProgressText = document.getElementById('totalProgressText');
@@ -372,18 +384,21 @@ function initCheckboxes() {
             checkbox.checked = true;
         }
         
-        checkbox.addEventListener('change', function() {
-            const progress = loadProgress();
-            progress[this.id] = this.checked;
-            saveProgress(progress);
-            
-            const category = this.dataset.category;
-            updateCategoryProgress(category);
-            updateTotalProgress();
-        });
+        if (checkbox.dataset.category) {
+            checkbox.addEventListener('change', function() {
+                const progress = loadProgress();
+                progress[this.id] = this.checked;
+                saveProgress(progress);
+                
+                const category = this.dataset.category;
+                updateCategoryProgress(category);
+                updateTotalProgress();
+            });
+        }
     });
 
-    const categories = new Set(Array.from(checkboxes).map(cb => cb.dataset.category));
+    const mainCheckboxes = document.querySelectorAll('input[data-category]');
+    const categories = new Set(Array.from(mainCheckboxes).map(cb => cb.dataset.category));
     categories.forEach(category => updateCategoryProgress(category));
     updateTotalProgress();
 }
@@ -453,11 +468,19 @@ function addReadyCheckboxes() {
             progress[this.id] = this.checked;
             saveProgress(progress);
             updateSkillItemState(item);
+            
+            const category = mainCheckbox.dataset.category;
+            updateCategoryProgress(category);
+            updateTotalProgress();
             updateReadyForTestIndicator();
         });
         
         mainCheckbox.addEventListener('change', function() {
             updateSkillItemState(item);
+            
+            const category = this.dataset.category;
+            updateCategoryProgress(category);
+            updateTotalProgress();
             updateReadyForTestIndicator();
         });
     });
@@ -487,6 +510,147 @@ function initSkillItemClicks() {
     });
 }
 
+/**
+ * Массив советов
+ */
+const TIPS = [
+    { id: 1, category: "Figma", text: "Используй Auto Layout для адаптивных компонентов" },
+    { id: 2, category: "Figma", text: "Горячие клавиши: V - выделение, F - рамка, T - текст" },
+    { id: 3, category: "Figma", text: "Проверяй отступы с помощью Alt при выделении элемента" },
+    { id: 4, category: "Figma", text: "Копируй CSS свойства через правую кнопку мыши" },
+    { id: 5, category: "Figma", text: "Используй Constraints для адаптивности элементов" },
+    { id: 6, category: "Figma", text: "Экспортируй иконки в SVG для лучшего качества" },
+    { id: 7, category: "Figma", text: "Создавай компоненты для повторяющихся элементов" },
+    { id: 8, category: "Figma", text: "Используй сетку (Grid) для выравнивания элементов" },
+    { id: 9, category: "Figma", text: "Проверяй макет на разных размерах экрана" },
+    { id: 10, category: "Figma", text: "Используй плагины для ускорения работы" },
+    { id: 11, category: "HTML", text: "Всегда используй семантические теги: header, nav, main, footer" },
+    { id: 12, category: "HTML", text: "Добавляй alt к изображениям для доступности и SEO" },
+    { id: 13, category: "HTML", text: "Используй <button> для кнопок, а не <div>" },
+    { id: 14, category: "HTML", text: "Проверяй валидность HTML через validator.w3.org" },
+    { id: 15, category: "HTML", text: "Используй <label> для связи с input элементами" },
+    { id: 16, category: "HTML", text: "Не забывай про meta viewport для адаптивности" },
+    { id: 17, category: "HTML", text: "Используй data-* атрибуты для хранения данных" },
+    { id: 18, category: "HTML", text: "Структурируй код с помощью <section> и <article>" },
+    { id: 19, category: "HTML", text: "Используй <picture> для адаптивных изображений" },
+    { id: 20, category: "HTML", text: "Добавляй title к ссылкам для лучшего UX" },
+    { id: 21, category: "CSS", text: "Используй CSS переменные для повторяющихся значений" },
+    { id: 22, category: "CSS", text: "Flexbox для одномерных макетов, Grid для двумерных" },
+    { id: 23, category: "CSS", text: "Используй rem для размеров, px только для border" },
+    { id: 24, category: "CSS", text: "Mobile-first: начинай стили с мобильной версии" },
+    { id: 25, category: "CSS", text: "Используй transition для плавных изменений" },
+    { id: 26, category: "JavaScript", text: "Используй const по умолчанию, let только при необходимости" },
+    { id: 27, category: "JavaScript", text: "Всегда обрабатывай ошибки в async/await через try/catch" },
+    { id: 28, category: "Git", text: "Делай коммиты часто с понятными сообщениями" },
+    { id: 29, category: "Общее", text: "Проверяй код в DevTools перед финальной версткой" },
+    { id: 30, category: "Общее", text: "Практика важнее теории - делай проекты каждый день" },
+    { id: 31, category: "Общее", text: "Прежде чем нажать кнопку 'Готов к тестированию' убедись что и правда готов" }
+];
+
+let shownTips = [];
+let tipTimer = null;
+
+/**
+ * Получает случайный совет, который еще не был показан
+ * @returns {Object|null} Объект с советом или null
+ */
+function getRandomTip() {
+    if (shownTips.length === TIPS.length) {
+        shownTips = [];
+    }
+    
+    const availableTips = TIPS.filter(tip => !shownTips.includes(tip.id));
+    if (availableTips.length === 0) return null;
+    
+    const randomIndex = Math.floor(Math.random() * availableTips.length);
+    const tip = availableTips[randomIndex];
+    shownTips.push(tip.id);
+    
+    return tip;
+}
+
+/**
+ * Проверяет, открыт ли попап с советом
+ * @returns {boolean} true если попап открыт
+ */
+function isTipPopupOpen() {
+    const popup = document.getElementById('tipPopup');
+    return popup && popup.style.display === 'block';
+}
+
+/**
+ * Показывает попап с советом
+ * @param {Object} tip - Объект с советом
+ */
+function showTip(tip) {
+    if (isTipPopupOpen()) {
+        return;
+    }
+    
+    const popup = document.getElementById('tipPopup');
+    const category = document.getElementById('tipCategory');
+    const text = document.getElementById('tipText');
+    
+    if (!popup || !category || !text) return;
+    
+    category.textContent = tip.category;
+    text.textContent = tip.text;
+    
+    popup.style.display = 'block';
+    popup.classList.remove('closing');
+}
+
+/**
+ * Закрывает попап с советом
+ */
+function closeTip() {
+    const popup = document.getElementById('tipPopup');
+    if (!popup) return;
+    
+    popup.classList.add('closing');
+    setTimeout(() => {
+        popup.style.display = 'none';
+        popup.classList.remove('closing');
+        scheduleNextTip();
+    }, 300);
+}
+
+/**
+ * Планирует показ следующего совета
+ */
+function scheduleNextTip() {
+    const minDelay = 25 * 1000;
+    const maxDelay = 60 * 1000;
+    const delay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+    
+    if (tipTimer) {
+        clearTimeout(tipTimer);
+    }
+    
+    tipTimer = setTimeout(() => {
+        if (!isTipPopupOpen()) {
+            const tip = getRandomTip();
+            if (tip) {
+                showTip(tip);
+            }
+        } else {
+            scheduleNextTip();
+        }
+    }, delay);
+}
+
+/**
+ * Инициализирует систему советов
+ */
+function initTips() {
+    const closeButton = document.getElementById('tipClose');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeTip);
+    }
+    
+    scheduleNextTip();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     addReadyCheckboxes();
     initCheckboxes();
@@ -494,4 +658,5 @@ document.addEventListener('DOMContentLoaded', () => {
     startLearningTimer();
     updateReadyForTestIndicator();
     initReadyListToggle();
+    initTips();
 });
