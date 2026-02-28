@@ -17,7 +17,31 @@
     <main class="main">
         <section class="intro">
             <h1>Путь Web-разработчика</h1>
+            <div class="rank-display">
+                <span class="rank-name">Артем</span>
+                <span class="rank-separator">—</span>
+                <span class="rank-title" id="rankTitle">Слабак</span>
+            </div>
             <p>Отслеживай свой прогресс от начинающего до Junior Frontend Developer</p>
+            
+            <div class="ready-for-test-indicator" id="readyIndicator" style="display: none;">
+                <div class="indicator-icon">
+                    <span class="icon-base">📝</span>
+                    <span class="icon-badge">❗</span>
+                </div>
+                <div class="indicator-content">
+                    <div class="indicator-title">Готово к тестированию</div>
+                    <div class="indicator-count" id="readyCount">0 навыков</div>
+                </div>
+                <button class="indicator-toggle" id="toggleReadyList">
+                    Показать список
+                </button>
+                <div class="ready-list" id="readyList" style="display: none;">
+                    <div class="ready-list-content" id="readyListContent">
+                        <!-- Список будет заполнен через JavaScript -->
+                    </div>
+                </div>
+            </div>
             
             <div class="intro-stats">
                 <div class="circular-progress">
@@ -38,17 +62,29 @@
                 </div>
                 
                 <div class="time-stats">
-                    <div class="time-item">
-                        <div class="time-value" id="daysLearning">0</div>
-                        <div class="time-label">дней обучения</div>
-                    </div>
-                    <div class="time-item">
-                        <div class="time-value" id="weeksLearning">0</div>
-                        <div class="time-label">недель</div>
-                    </div>
-                    <div class="time-item">
-                        <div class="time-value" id="monthsLearning">0</div>
-                        <div class="time-label">месяцев</div>
+                    <div class="time-main">
+                        <div class="time-title">Время в обучении</div>
+                        <div class="time-display">
+                            <div class="time-block">
+                                <div class="time-value" id="daysLearning">0</div>
+                                <div class="time-label">дней</div>
+                            </div>
+                            <div class="time-separator">:</div>
+                            <div class="time-block">
+                                <div class="time-value" id="hoursLearning">00</div>
+                                <div class="time-label">часов</div>
+                            </div>
+                            <div class="time-separator">:</div>
+                            <div class="time-block">
+                                <div class="time-value" id="minutesLearning">00</div>
+                                <div class="time-label">минут</div>
+                            </div>
+                            <div class="time-separator">:</div>
+                            <div class="time-block">
+                                <div class="time-value" id="secondsLearning">00</div>
+                                <div class="time-label">секунд</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
