@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artem Study - Путь Web-разработчика</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Artem Study</a>
+        <nav class="menu">
+            <a href="#statistics" class="menu__item">К статистике</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="intro">
+            <h1>Путь Web-разработчика</h1>
+            <p>Отслеживай свой прогресс от начинающего до Junior Frontend Developer</p>
+            
+            <div class="intro-stats">
+                <div class="circular-progress">
+                    <svg class="progress-ring" width="200" height="200">
+                        <circle class="progress-ring__circle-bg" stroke="#1f2937" stroke-width="10" fill="transparent" r="90" cx="100" cy="100"/>
+                        <circle class="progress-ring__circle" stroke="url(#gradient)" stroke-width="10" fill="transparent" r="90" cx="100" cy="100" id="progressCircle"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="progress-content">
+                        <div class="progress-percentage" id="skillsPercentage">0%</div>
+                        <div class="progress-label">Навыков освоено</div>
+                    </div>
+                </div>
+                
+                <div class="time-stats">
+                    <div class="time-item">
+                        <div class="time-value" id="daysLearning">0</div>
+                        <div class="time-label">дней обучения</div>
+                    </div>
+                    <div class="time-item">
+                        <div class="time-value" id="weeksLearning">0</div>
+                        <div class="time-label">недель</div>
+                    </div>
+                    <div class="time-item">
+                        <div class="time-value" id="monthsLearning">0</div>
+                        <div class="time-label">месяцев</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h2>Технологии и навыки</h2>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>Figma</h3>
+                    <span class="category-progress" data-category="figma">0 из 6</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="figma" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="figma-interface" data-category="figma">
+                        </div>
+                        <div class="skill-content">
+                            <label for="figma-interface" class="skill-name">Интерфейс и инструменты</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Навигация, панели, основные инструменты рисования</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="figma-layers" data-category="figma">
+                        </div>
+                        <div class="skill-content">
+                            <label for="figma-layers" class="skill-name">Работа со слоями</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Создание, группировка, именование слоев</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="figma-export" data-category="figma">
+                        </div>
+                        <div class="skill-content">
+                            <label for="figma-export" class="skill-name">Экспорт ассетов</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Экспорт изображений, иконок, SVG</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="figma-measure" data-category="figma">
+                        </div>
+                        <div class="skill-content">
+                            <label for="figma-measure" class="skill-name">Измерение размеров и отступов</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Определение размеров элементов, отступов, шрифтов</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="figma-styles" data-category="figma">
+                        </div>
+                        <div class="skill-content">
+                            <label for="figma-styles" class="skill-name">Копирование стилей</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Получение CSS свойств, цветов, шрифтов из макета</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="figma-prototype" data-category="figma">
+                        </div>
+                        <div class="skill-content">
+                            <label for="figma-prototype" class="skill-name">Понимание прототипов</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Просмотр интерактивных прототипов, понимание переходов</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>HTML</h3>
+                    <span class="category-progress" data-category="html">0 из 8</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="html" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-basic-tags" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-basic-tags" class="skill-name">Основные теги</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">div, span, p, h1-h6, a, img, button</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-lists" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-lists" class="skill-name">Списки</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">ul, ol, li - маркированные и нумерованные списки</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-semantic" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-semantic" class="skill-name">Семантические теги</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">header, nav, main, section, article, aside, footer</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-forms" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-forms" class="skill-name">Формы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">form, input, textarea, select, button</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-attributes" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-attributes" class="skill-name">Атрибуты</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">class, id, src, href, alt, title, data-*</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-tables" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-tables" class="skill-name">Таблицы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">table, tr, td, th, thead, tbody</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-meta" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-meta" class="skill-name">Meta теги</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">viewport, charset, description, keywords</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="html-validation" data-category="html">
+                        </div>
+                        <div class="skill-content">
+                            <label for="html-validation" class="skill-name">Валидация HTML</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Проверка корректности разметки, закрытие тегов</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>CSS</h3>
+                    <span class="category-progress" data-category="css">0 из 12</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="css" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-selectors" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-selectors" class="skill-name">Селекторы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Классы, ID, теги, псевдоклассы, псевдоэлементы</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-box-model" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-box-model" class="skill-name">Блочная модель</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">margin, padding, border, width, height, box-sizing</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-positioning" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-positioning" class="skill-name">Позиционирование</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">static, relative, absolute, fixed, sticky</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-flexbox" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-flexbox" class="skill-name">Flexbox</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">display: flex, justify-content, align-items, flex-direction</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-grid" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-grid" class="skill-name">Grid</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">display: grid, grid-template, gap, grid-column/row</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-typography" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-typography" class="skill-name">Типографика</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">font-family, font-size, font-weight, line-height, letter-spacing</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-colors" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-colors" class="skill-name">Цвета и фоны</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">color, background, gradient, opacity, rgba</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-transitions" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-transitions" class="skill-name">Переходы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">transition, transform, плавные изменения свойств</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-animations" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-animations" class="skill-name">Анимации</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">@keyframes, animation, сложные анимации</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-responsive" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-responsive" class="skill-name">Адаптивность</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">@media queries, mobile-first подход</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-units" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-units" class="skill-name">Единицы измерения</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">px, %, em, rem, vh, vw</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="css-bem" data-category="css">
+                        </div>
+                        <div class="skill-content">
+                            <label for="css-bem" class="skill-name">BEM методология</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Блок__Элемент--Модификатор, структурирование классов</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>SCSS</h3>
+                    <span class="category-progress" data-category="scss">0 из 6</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="scss" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="scss-nesting" data-category="scss">
+                        </div>
+                        <div class="skill-content">
+                            <label for="scss-nesting" class="skill-name">Вложенность</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Вложенные селекторы для структурированного кода</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="scss-variables" data-category="scss">
+                        </div>
+                        <div class="skill-content">
+                            <label for="scss-variables" class="skill-name">Переменные</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">$color, $size - хранение повторяющихся значений</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="scss-mixins" data-category="scss">
+                        </div>
+                        <div class="skill-content">
+                            <label for="scss-mixins" class="skill-name">Миксины</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">@mixin, @include - переиспользуемые блоки стилей</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="scss-functions" data-category="scss">
+                        </div>
+                        <div class="skill-content">
+                            <label for="scss-functions" class="skill-name">Функции</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">@function, @return - создание собственных функций</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="scss-import" data-category="scss">
+                        </div>
+                        <div class="skill-content">
+                            <label for="scss-import" class="skill-name">Импорты</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">@import, @use - разделение стилей на файлы</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="scss-operators" data-category="scss">
+                        </div>
+                        <div class="skill-content">
+                            <label for="scss-operators" class="skill-name">Операторы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Математические операции, условия, циклы</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>Верстка</h3>
+                    <span class="category-progress" data-category="layout">0 из 10</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="layout" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-pixel-perfect" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-pixel-perfect" class="skill-name">Pixel Perfect</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Точное соответствие макету, проверка наложением</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-responsive" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-responsive" class="skill-name">Адаптивная верстка</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Desktop, tablet, mobile - корректное отображение на всех устройствах</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-cross-browser" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-cross-browser" class="skill-name">Кроссбраузерность</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Chrome, Firefox, Safari, Edge - работа во всех браузерах</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-svg" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-svg" class="skill-name">Работа с SVG</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Вставка, стилизация, оптимизация векторной графики</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-fonts" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-fonts" class="skill-name">Подключение шрифтов</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Google Fonts, @font-face, woff/woff2</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-optimization" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-optimization" class="skill-name">Оптимизация изображений</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Сжатие, webp, lazy loading, srcset</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-accessibility" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-accessibility" class="skill-name">Доступность (A11y)</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">aria-атрибуты, семантика, навигация с клавиатуры</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-seo" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-seo" class="skill-name">Основы SEO</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Заголовки, alt, meta-теги, структура страницы</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-performance" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-performance" class="skill-name">Производительность</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Минификация, критический CSS, отложенная загрузка</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="layout-retina" data-category="layout">
+                        </div>
+                        <div class="skill-content">
+                            <label for="layout-retina" class="skill-name">Retina дисплеи</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">@2x изображения, высокая плотность пикселей</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>JavaScript</h3>
+                    <span class="category-progress" data-category="javascript">0 из 15</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="javascript" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-variables" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-variables" class="skill-name">Переменные и типы данных</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">let, const, var, string, number, boolean, null, undefined</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-operators" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-operators" class="skill-name">Операторы и условия</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">if/else, switch, тернарный оператор, логические операторы</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-loops" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-loops" class="skill-name">Циклы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">for, while, do-while, for...of, for...in</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-functions" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-functions" class="skill-name">Функции</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">function, стрелочные функции, параметры, return</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-arrays" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-arrays" class="skill-name">Массивы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">push, pop, map, filter, reduce, find, forEach</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-objects" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-objects" class="skill-name">Объекты</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Создание, свойства, методы, деструктуризация</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-dom" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-dom" class="skill-name">DOM манипуляции</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">querySelector, createElement, appendChild, innerHTML</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-events" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-events" class="skill-name">События</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">addEventListener, click, submit, input, делегирование</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-classes" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-classes" class="skill-name">Классы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">class, constructor, методы, наследование</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-async" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-async" class="skill-name">Асинхронность</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">setTimeout, setInterval, Promise, async/await</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-fetch" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-fetch" class="skill-name">Fetch API</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">GET/POST запросы, работа с JSON, обработка ошибок</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-storage" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-storage" class="skill-name">LocalStorage</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">setItem, getItem, removeItem, сохранение данных</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-es6" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-es6" class="skill-name">ES6+ синтаксис</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Деструктуризация, spread/rest, template literals</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-modules" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-modules" class="skill-name">Модули</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">import/export, разделение кода на файлы</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="js-error-handling" data-category="javascript">
+                        </div>
+                        <div class="skill-content">
+                            <label for="js-error-handling" class="skill-name">Обработка ошибок</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">try/catch, throw, отладка в консоли</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>jQuery</h3>
+                    <span class="category-progress" data-category="jquery">0 из 5</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="jquery" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="jquery-selectors" data-category="jquery">
+                        </div>
+                        <div class="skill-content">
+                            <label for="jquery-selectors" class="skill-name">Селекторы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">$(), поиск элементов, фильтрация</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="jquery-dom" data-category="jquery">
+                        </div>
+                        <div class="skill-content">
+                            <label for="jquery-dom" class="skill-name">Манипуляции с DOM</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">html(), text(), append(), remove(), addClass()</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="jquery-events" data-category="jquery">
+                        </div>
+                        <div class="skill-content">
+                            <label for="jquery-events" class="skill-name">События</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">click(), on(), hover(), submit()</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="jquery-effects" data-category="jquery">
+                        </div>
+                        <div class="skill-content">
+                            <label for="jquery-effects" class="skill-name">Эффекты</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">show(), hide(), fadeIn(), slideToggle()</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="jquery-ajax" data-category="jquery">
+                        </div>
+                        <div class="skill-content">
+                            <label for="jquery-ajax" class="skill-name">AJAX</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">$.ajax(), $.get(), $.post(), работа с сервером</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>Библиотеки</h3>
+                    <span class="category-progress" data-category="libraries">0 из 7</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="libraries" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="lib-swiper" data-category="libraries">
+                        </div>
+                        <div class="skill-content">
+                            <label for="lib-swiper" class="skill-name">Swiper</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Современная библиотека слайдеров с touch-поддержкой</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="lib-gsap" data-category="libraries">
+                        </div>
+                        <div class="skill-content">
+                            <label for="lib-gsap" class="skill-name">GSAP</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Мощная библиотека для сложных анимаций</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="lib-aos" data-category="libraries">
+                        </div>
+                        <div class="skill-content">
+                            <label for="lib-aos" class="skill-name">AOS</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Animate On Scroll - анимации при прокрутке</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="lib-owl" data-category="libraries">
+                        </div>
+                        <div class="skill-content">
+                            <label for="lib-owl" class="skill-name">Owl Carousel</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">jQuery плагин для каруселей</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="lib-slick" data-category="libraries">
+                        </div>
+                        <div class="skill-content">
+                            <label for="lib-slick" class="skill-name">Slick Slider</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Адаптивный слайдер с множеством опций</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="lib-animate" data-category="libraries">
+                        </div>
+                        <div class="skill-content">
+                            <label for="lib-animate" class="skill-name">Animate.css</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Готовые CSS анимации</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="lib-scroll" data-category="libraries">
+                        </div>
+                        <div class="skill-content">
+                            <label for="lib-scroll" class="skill-name">ScrollMagic / Locomotive Scroll</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Продвинутые эффекты при скролле</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>Инструменты</h3>
+                    <span class="category-progress" data-category="tools">0 из 12</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="tools" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-git-basics" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-git-basics" class="skill-name">Git основы</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">init, add, commit, status, log</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-git-branches" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-git-branches" class="skill-name">Git ветки</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">branch, checkout, merge, конфликты</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-github" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-github" class="skill-name">GitHub</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">push, pull, clone, remote, GitHub Pages</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-vscode" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-vscode" class="skill-name">VS Code</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Редактор кода, расширения, настройка</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-devtools" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-devtools" class="skill-name">Chrome DevTools</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Инспектор, консоль, отладка, Network, Performance</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-npm" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-npm" class="skill-name">npm</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">install, package.json, node_modules</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-terminal" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-terminal" class="skill-name">Командная строка</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">cd, ls, mkdir, rm, базовые команды</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-gulp" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-gulp" class="skill-name">Gulp</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Автоматизация задач, сборка проекта</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-webpack" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-webpack" class="skill-name">Webpack</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Сборщик модулей, базовая конфигурация</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-prettier" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-prettier" class="skill-name">Prettier</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Автоформатирование кода</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-eslint" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-eslint" class="skill-name">ESLint</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Проверка кода на ошибки</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="tool-emmet" data-category="tools">
+                        </div>
+                        <div class="skill-content">
+                            <label for="tool-emmet" class="skill-name">Emmet</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Быстрая генерация HTML/CSS кода</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <div class="category-header">
+                    <h3>Практика</h3>
+                    <span class="category-progress" data-category="practice">0 из 5</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" data-progress="practice" style="width: 0%"></div>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="practice-landing" data-category="practice">
+                        </div>
+                        <div class="skill-content">
+                            <label for="practice-landing" class="skill-name">Проект 1: Лендинг</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Одностраничный сайт с адаптивной версткой</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="practice-multipage" data-category="practice">
+                        </div>
+                        <div class="skill-content">
+                            <label for="practice-multipage" class="skill-name">Проект 2: Многостраничник</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Сайт с несколькими страницами и навигацией</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="practice-interactive" data-category="practice">
+                        </div>
+                        <div class="skill-content">
+                            <label for="practice-interactive" class="skill-name">Проект 3: Интерактивный сайт</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Формы, слайдеры, модальные окна, табы</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="practice-spa" data-category="practice">
+                        </div>
+                        <div class="skill-content">
+                            <label for="practice-spa" class="skill-name">Проект 4: SPA приложение</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Работа с API, динамическое обновление контента</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="practice-portfolio" data-category="practice">
+                        </div>
+                        <div class="skill-content">
+                            <label for="practice-portfolio" class="skill-name">Проект 5: Портфолио</label>
+                            <span class="tooltip-trigger">
+                                ?
+                                <span class="tooltip">Личный сайт с демонстрацией всех проектов и навыков</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="statistics-section" id="statistics">
+            <h2>Статистика прогресса</h2>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">Figma</span>
+                        <span class="stat-progress" data-stat="figma">0 из 6 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="figma" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">HTML</span>
+                        <span class="stat-progress" data-stat="html">0 из 8 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="html" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">CSS</span>
+                        <span class="stat-progress" data-stat="css">0 из 12 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="css" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">SCSS</span>
+                        <span class="stat-progress" data-stat="scss">0 из 6 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="scss" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">Верстка</span>
+                        <span class="stat-progress" data-stat="layout">0 из 10 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="layout" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">JavaScript</span>
+                        <span class="stat-progress" data-stat="javascript">0 из 15 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="javascript" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">jQuery</span>
+                        <span class="stat-progress" data-stat="jquery">0 из 5 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="jquery" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">Библиотеки</span>
+                        <span class="stat-progress" data-stat="libraries">0 из 7 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="libraries" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">Инструменты</span>
+                        <span class="stat-progress" data-stat="tools">0 из 12 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="tools" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span class="stat-name">Практика</span>
+                        <span class="stat-progress" data-stat="practice">0 из 5 (0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" data-stat-progress="practice" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-item stat-item--total">
+                    <div class="stat-header">
+                        <span class="stat-name">Общий прогресс</span>
+                        <span class="stat-progress" id="totalProgressText">0 из 86 (0%)</span>
+                    </div>
+                    <div class="progress-bar progress-bar--large">
+                        <div class="progress-bar-fill" id="totalProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <!-- Футер пока пустой -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
