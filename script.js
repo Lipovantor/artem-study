@@ -2,6 +2,8 @@
  * Ключ для сохранения прогресса в localStorage
  */
 const STORAGE_KEY = 'artemStudyProgress';
+const PROGRESS_QUERY_PARAM = 'progress';
+const SHARE_STATUS_RESET_DELAY = 3000;
 
 /**
  * Загружает прогресс из localStorage
@@ -18,6 +20,161 @@ function loadProgress() {
  */
 function saveProgress(progress) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+}
+
+/**
+ * Получает все чекбоксы прогресса в стабильном порядке
+ * @returns {HTMLInputElement[]} Массив чекбоксов прогресса
+ */
+function getProgressCheckboxes() {
+    return Array.from(document.querySelectorAll('.skill-item input[type="checkbox"]'));
+}
+
+/**
+ * Создает строку состояния прогресса для передачи в ссылке
+ * @returns {string} Строка из 0 и 1, отражающая состояние чекбоксов
+ */
+function createProgressSnapshot() {
+    return getProgressCheckboxes()
+        .map(checkbox => checkbox.checked ? '1' : '0')
+        .join('');
+}
+
+/**
+ * Применяет состояние прогресса из строки снимка
+ * @param {string} snapshot - Строка состояния прогресса
+ * @returns {boolean} true если снимок успешно применен
+ */
+function applyProgressSnapshot(snapshot) {
+    const checkboxes = getProgressCheckboxes();
+
+    if (!/^[01]+$/.test(snapshot) || snapshot.length !== checkboxes.length) {
+        return false;
+    }
+
+    const progress = {};
+
+    checkboxes.forEach((checkbox, index) => {
+        const isChecked = snapshot[index] === '1';
+        checkbox.checked = isChecked;
+
+        if (isChecked) {
+            progress[checkbox.id] = true;
+        }
+    });
+
+    saveProgress(progress);
+    return true;
+}
+
+/**
+ * Обновляет весь интерфейс прогресса после изменения чекбоксов
+ */
+function refreshProgressUI() {
+    const skillItems = document.querySelectorAll('.skill-item');
+    skillItems.forEach(updateSkillItemState);
+
+    const mainCheckboxes = document.querySelectorAll('input[data-category]');
+    const categories = new Set(Array.from(mainCheckboxes).map(checkbox => checkbox.dataset.category));
+
+    categories.forEach(category => updateCategoryProgress(category));
+    updateTotalProgress();
+    updateReadyForTestIndicator();
+}
+
+/**
+ * Показывает сообщение рядом с кнопкой обмена прогрессом
+ * @param {string} message - Текст сообщения
+ * @param {boolean} isError - Признак сообщения об ошибке
+ */
+function showShareStatus(message, isError = false) {
+    const statusElement = document.getElementById('shareProgressStatus');
+
+    if (!statusElement) {
+        return;
+    }
+
+    statusElement.textContent = message;
+    statusElement.classList.remove('is-success', 'is-error');
+    statusElement.classList.add(isError ? 'is-error' : 'is-success');
+
+    window.clearTimeout(showShareStatus.timeoutId);
+    showShareStatus.timeoutId = window.setTimeout(() => {
+        statusElement.textContent = '';
+        statusElement.classList.remove('is-success', 'is-error');
+    }, SHARE_STATUS_RESET_DELAY);
+}
+
+/**
+ * Создает ссылку с текущим прогрессом
+ * @returns {string} Полная ссылка с зашитым прогрессом
+ */
+function buildProgressShareLink() {
+    const shareUrl = new URL(window.location.href);
+    shareUrl.searchParams.set(PROGRESS_QUERY_PARAM, createProgressSnapshot());
+    return shareUrl.toString();
+}
+
+/**
+ * Копирует текст в буфер обмена
+ * @param {string} text - Текст для копирования
+ * @returns {Promise<void>}
+ */
+async function copyTextToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+    }
+
+    const helperTextarea = document.createElement('textarea');
+    helperTextarea.value = text;
+    helperTextarea.setAttribute('readonly', '');
+    helperTextarea.style.position = 'fixed';
+    helperTextarea.style.left = '-9999px';
+    document.body.appendChild(helperTextarea);
+    helperTextarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(helperTextarea);
+}
+
+/**
+ * Копирует ссылку с текущим прогрессом
+ * @returns {Promise<void>}
+ */
+async function copyProgressLink() {
+    try {
+        const shareLink = buildProgressShareLink();
+        await copyTextToClipboard(shareLink);
+        showShareStatus('Ссылка скопирована');
+    } catch (error) {
+        showShareStatus('Не удалось скопировать ссылку', true);
+    }
+}
+
+/**
+ * Загружает прогресс из параметра ссылки
+ * @returns {boolean} true если прогресс успешно загружен
+ */
+function importProgressFromUrl() {
+    const currentUrl = new URL(window.location.href);
+    const snapshot = currentUrl.searchParams.get(PROGRESS_QUERY_PARAM);
+
+    if (!snapshot) {
+        return false;
+    }
+
+    const isApplied = applyProgressSnapshot(snapshot);
+
+    currentUrl.searchParams.delete(PROGRESS_QUERY_PARAM);
+    window.history.replaceState({}, document.title, currentUrl.toString());
+
+    if (isApplied) {
+        showShareStatus('Прогресс загружен из ссылки');
+        return true;
+    }
+
+    showShareStatus('Ссылка с прогрессом повреждена', true);
+    return false;
 }
 
 /**
@@ -396,11 +553,8 @@ function initCheckboxes() {
             });
         }
     });
-
-    const mainCheckboxes = document.querySelectorAll('input[data-category]');
-    const categories = new Set(Array.from(mainCheckboxes).map(cb => cb.dataset.category));
-    categories.forEach(category => updateCategoryProgress(category));
-    updateTotalProgress();
+    
+    refreshProgressUI();
 }
 
 /**
@@ -651,12 +805,28 @@ function initTips() {
     scheduleNextTip();
 }
 
+/**
+ * Инициализирует кнопку копирования ссылки с прогрессом
+ */
+function initShareControls() {
+    const copyButton = document.getElementById('copyProgressLinkButton');
+
+    if (!copyButton) {
+        return;
+    }
+
+    copyButton.addEventListener('click', () => {
+        copyProgressLink();
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     addReadyCheckboxes();
+    importProgressFromUrl();
     initCheckboxes();
+    initShareControls();
     initSkillItemClicks();
     startLearningTimer();
-    updateReadyForTestIndicator();
     initReadyListToggle();
     initTips();
 });
